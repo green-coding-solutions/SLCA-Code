@@ -1,0 +1,45 @@
+name: Carbon Aware Development example
+author: Didi Hoffmann <didi@green-coding.berlin>
+version: 1
+description: An example how to develop a program while thinking of your environmental impact
+
+compose-file: !include docker-compose.yml
+
+services:
+  gcb-python:
+    image: python:3.9
+    setup-commands:
+      - cp /tmp/repo/bench.py bench.py
+      - cp /tmp/repo/requirements.txt requirements.txt
+      - pip install -r requirements.txt
+    networks:
+      - gcb-bench
+  app:
+    networks:
+      - gcb-bench
+  db:
+    networks:
+      - gcb-bench
+
+networks:
+  gcb-bench:
+
+flow:
+  - name: CAD Bechmark
+    container: gcb-python
+    commands:
+      - type: console
+        command: python3 bench.py save
+        note: Save Flow
+      - type: console
+        command: sleep 10
+        note: Idling
+      - type: console
+        command: python3 bench.py last_time
+        note: Last Time Flow
+      - type: console
+        command: sleep 10
+        note: Idling
+      - type: console
+        command: python3 bench.py badge
+        note: Badge Flow

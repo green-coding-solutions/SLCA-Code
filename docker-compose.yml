@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  app:
+    image: bench_app
+    build: .
+    # volumes:
+    #   - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql+asyncpg://user:password@db/database_name
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: database_name
+    ports:
+      - "5433:5432"
