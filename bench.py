@@ -1,7 +1,7 @@
 import argparse
 import requests
 import json
-QUERY_COUNT = 1000
+QUERY_COUNT = 2000
 BASE_URL = 'http://app:8000'
 
 def get_data(url):
