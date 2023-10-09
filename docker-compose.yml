@@ -6,12 +6,12 @@ services:
     build: .
     # volumes:
     #   - .:/code
-    ports:
-      - "8000:8000"
+    # ports:
+    #   - "8000:8000"
     depends_on:
       - db
-    environment:
-      DATABASE_URL: postgresql+asyncpg://user:password@db/database_name
+    # environment:
+    #   DATABASE_URL: postgresql+asyncpg://user:password@db/database_name
 
   db:
     image: postgres:13
@@ -19,5 +19,5 @@ services:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
       POSTGRES_DB: database_name
-    ports:
-      - "5433:5432"
+    # ports:
+    #   - "5433:5432"
