@@ -14,7 +14,7 @@ matplotlib==3.7.1
 numpy==1.24.3
 packaging==23.1
 pandas==2.0.1
-Pillow==10.2.0
+Pillow==10.3.0
 pydantic==1.10.7
 pyobjc==9.2
 pyobjc-core==9.2
